@@ -89,7 +89,9 @@ enum combos {
     CMB_S_D_FOR_NUMBER_LAYER,
     CMB_K_L_FOR_NUMBER_LAYER,
     CMB_A_S_FOR_FN_LAYER,
-    CMB_L_SCLN_FOR_FN_LAYER
+    CMB_L_SCLN_FOR_FN_LAYER,
+    CMB_F_J_FOR_ESC,
+    CMB_D_K_FOR_ENT
 };
 
 // COMBO MODS
@@ -114,6 +116,10 @@ const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM a_s_combo[] = {KC_A, KC_S, COMBO_END};
 const uint16_t PROGMEM l_scln_combo[] = {KC_L, KC_SCLN, COMBO_END};
 
+// KEY COMBOS
+const uint16_t PROGMEM f_j_combo[] = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM d_k_combo[] = {KC_D, KC_K, COMBO_END};
+
 combo_t key_combos[] = {
     [CMB_F_D_FOR_LGUI] = COMBO(f_d_combo, KC_LGUI),
     [CMB_F_S_FOR_LALT] = COMBO(f_s_combo, KC_LALT),
@@ -133,5 +139,8 @@ combo_t key_combos[] = {
     [CMB_S_D_FOR_NUMBER_LAYER] = COMBO(s_d_combo, MO(NUMBER_LAYER)),
     [CMB_K_L_FOR_NUMBER_LAYER] = COMBO(k_l_combo, MO(NUMBER_LAYER)),
     [CMB_A_S_FOR_FN_LAYER] = COMBO(a_s_combo, MO(F_KEY_LAYER)),
-    [CMB_L_SCLN_FOR_FN_LAYER] = COMBO(l_scln_combo, MO(F_KEY_LAYER))
+    [CMB_L_SCLN_FOR_FN_LAYER] = COMBO(l_scln_combo, MO(F_KEY_LAYER)),
+
+    [CMB_F_J_FOR_ESC] = COMBO(f_j_combo, KC_ESC),
+    [CMB_D_K_FOR_ENT] = COMBO(d_k_combo, KC_ENT)
 };
