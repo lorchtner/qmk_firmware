@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NUMBER_LAYER] = LAYOUT_iso_83(
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX,
+         XXXXXXX, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,                   XXXXXXX,
          XXXXXXX, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,
          XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
@@ -72,26 +72,30 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif // ENCODER_MAP_ENABLE
 
 enum combos {
-    CMB_F_D_FOR_LGUI,
-    CMB_F_S_FOR_LALT,
-    CMB_F_A_FOR_LCTL,
-    CMB_F_D_S_FOR_LGUI_LALT,
-    CMB_F_D_A_FOR_LGUI_LCTL,
-    CMB_F_D_S_A_FOR_LGUI_LALT_LCTL,
-    CMB_F_S_A_FOR_LALT_LCTL,
-    CMB_J_K_FOR_RGUI,
-    CMB_J_L_FOR_LALT,
-    CMB_J_SCLN_FOR_RCTL,
-    CMB_J_K_L_FOR_RGUI_LALT,
-    CMB_J_K_SCLN_FOR_RGUI_RCTL,
-    CMB_J_K_L_SCLN_FOR_RGUI_LALT_RCTL,
-    CMB_J_L_SCLN_FOR_LALT_RCTL,
-    CMB_S_D_FOR_NUMBER_LAYER,
-    CMB_K_L_FOR_NUMBER_LAYER,
-    CMB_A_S_FOR_FN_LAYER,
-    CMB_L_SCLN_FOR_FN_LAYER,
-    CMB_F_J_FOR_ESC,
-    CMB_D_K_FOR_ENT
+    CMB_F_D,
+    CMB_F_S,
+    CMB_F_A,
+    CMB_F_D_S,
+    CMB_F_D_A,
+    CMB_F_D_S_A,
+    CMB_F_S_A,
+    CMB_J_K,
+    CMB_J_L,
+    CMB_J_SCLN,
+    CMB_J_K_L,
+    CMB_J_K_SCLN,
+    CMB_J_K_L_SCLN,
+    CMB_J_L_SCLN,
+
+    CMB_S_D,
+    CMB_K_L,
+    CMB_A_S,
+    CMB_L_SCLN,
+
+    CMB_F_J,
+    CMB_D_K,
+    CMB_D_J,
+    CMB_F_K
 };
 
 // COMBO MODS
@@ -119,28 +123,32 @@ const uint16_t PROGMEM l_scln_combo[] = {KC_L, KC_SCLN, COMBO_END};
 // KEY COMBOS
 const uint16_t PROGMEM f_j_combo[] = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM d_k_combo[] = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM d_j_combo[] = {KC_D, KC_J, COMBO_END};
+const uint16_t PROGMEM f_k_combo[] = {KC_F, KC_K, COMBO_END};
 
 combo_t key_combos[] = {
-    [CMB_F_D_FOR_LGUI] = COMBO(f_d_combo, KC_LGUI),
-    [CMB_F_S_FOR_LALT] = COMBO(f_s_combo, KC_LALT),
-    [CMB_F_A_FOR_LCTL] = COMBO(f_a_combo, KC_LCTL),
-    [CMB_F_D_S_FOR_LGUI_LALT] = COMBO(f_d_s_combo, LGUI(KC_LALT)),
-    [CMB_F_D_A_FOR_LGUI_LCTL] = COMBO(f_d_a_combo, LGUI(KC_LCTL)),
-    [CMB_F_D_S_A_FOR_LGUI_LALT_LCTL] = COMBO(f_d_s_a_combo, LGUI(LALT(KC_LCTL))),
-    [CMB_F_S_A_FOR_LALT_LCTL] = COMBO(f_s_a_combo, LALT(KC_LCTL)),
-    [CMB_J_K_FOR_RGUI] = COMBO(j_k_combo, KC_RGUI),
-    [CMB_J_L_FOR_LALT] = COMBO(j_l_combo, KC_LALT),
-    [CMB_J_SCLN_FOR_RCTL] = COMBO(j_scln_combo, KC_RCTL),
-    [CMB_J_K_L_FOR_RGUI_LALT] = COMBO(j_k_l_combo, RGUI(KC_LALT)),
-    [CMB_J_K_SCLN_FOR_RGUI_RCTL] = COMBO(j_k_scln_combo, RGUI(KC_RCTL)),
-    [CMB_J_K_L_SCLN_FOR_RGUI_LALT_RCTL] = COMBO(j_k_l_scln_combo, RGUI(LALT(KC_RCTL))),
-    [CMB_J_L_SCLN_FOR_LALT_RCTL] = COMBO(j_l_scln_combo, LALT(KC_RCTL)),
+    [CMB_F_D] = COMBO(f_d_combo, KC_LGUI),
+    [CMB_F_S] = COMBO(f_s_combo, KC_LALT),
+    [CMB_F_A] = COMBO(f_a_combo, KC_LCTL),
+    [CMB_F_D_S] = COMBO(f_d_s_combo, LGUI(KC_LALT)),
+    [CMB_F_D_A] = COMBO(f_d_a_combo, LGUI(KC_LCTL)),
+    [CMB_F_D_S_A] = COMBO(f_d_s_a_combo, LGUI(LALT(KC_LCTL))),
+    [CMB_F_S_A] = COMBO(f_s_a_combo, LALT(KC_LCTL)),
+    [CMB_J_K] = COMBO(j_k_combo, KC_RGUI),
+    [CMB_J_L] = COMBO(j_l_combo, KC_LALT),
+    [CMB_J_SCLN] = COMBO(j_scln_combo, KC_RCTL),
+    [CMB_J_K_L] = COMBO(j_k_l_combo, RGUI(KC_LALT)),
+    [CMB_J_K_SCLN] = COMBO(j_k_scln_combo, RGUI(KC_RCTL)),
+    [CMB_J_K_L_SCLN] = COMBO(j_k_l_scln_combo, RGUI(LALT(KC_RCTL))),
+    [CMB_J_L_SCLN] = COMBO(j_l_scln_combo, LALT(KC_RCTL)),
 
-    [CMB_S_D_FOR_NUMBER_LAYER] = COMBO(s_d_combo, MO(NUMBER_LAYER)),
-    [CMB_K_L_FOR_NUMBER_LAYER] = COMBO(k_l_combo, MO(NUMBER_LAYER)),
-    [CMB_A_S_FOR_FN_LAYER] = COMBO(a_s_combo, MO(F_KEY_LAYER)),
-    [CMB_L_SCLN_FOR_FN_LAYER] = COMBO(l_scln_combo, MO(F_KEY_LAYER)),
+    [CMB_S_D] = COMBO(s_d_combo, MO(NUMBER_LAYER)),
+    [CMB_K_L] = COMBO(k_l_combo, MO(NUMBER_LAYER)),
+    [CMB_A_S] = COMBO(a_s_combo, MO(F_KEY_LAYER)),
+    [CMB_L_SCLN] = COMBO(l_scln_combo, MO(F_KEY_LAYER)),
 
-    [CMB_F_J_FOR_ESC] = COMBO(f_j_combo, KC_ESC),
-    [CMB_D_K_FOR_ENT] = COMBO(d_k_combo, KC_ENT)
+    [CMB_F_J] = COMBO(f_j_combo, KC_ESC),
+    [CMB_D_K] = COMBO(d_k_combo, KC_ENT),
+    [CMB_D_J] = COMBO(d_j_combo, KC_BSPC),
+    [CMB_F_K] = COMBO(f_k_combo, KC_DEL)
 };
