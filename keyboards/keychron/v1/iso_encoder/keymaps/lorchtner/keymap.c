@@ -18,79 +18,56 @@
 
 // clang-format off
 
-enum layers{
-  MAC_BASE,
-  MAC_FN,
-  WIN_BASE,
-  WIN_FN,
-
-  // my custom layer(s) -------
-  NUMBER_LAYER,
-  F_KEY_LAYER
+enum layers {
+    BASE,
+    NUMBER_LAYER,
+    F_KEY_LAYER,
+    FN
 };
 
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [MAC_BASE] = LAYOUT_iso_83(
+    [BASE] = LAYOUT_iso_83(
          KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   KC_DEL,             KC_MNXT,
-         KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
-         KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
-         KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,   KC_HOME,
-         KC_LSFT,  KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
-         KC_LCTL,  KC_LALT,  KC_LGUI,                                KC_SPC,                                 KC_RGUI,  MO(MAC_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
-
-    [MAC_FN] = LAYOUT_iso_83(
-         KC_ESC,   KC_BRID,  KC_BRIU,  KC_NO,    KC_NO,    RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  _______,            _______,
-         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,
-         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,    _______,                      _______,
-         _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,
-         _______,  _______,  _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,
-         _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______),
-
-    [WIN_BASE] = LAYOUT_iso_83(
-         KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   KC_DEL,             KC_MUTE,
          KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
          KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
          KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_HOME,
          KC_LSFT,  KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
-         KC_LCTL,  KC_LWIN,  KC_LALT,                                KC_SPC,                                 KC_RALT,  MO(WIN_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+         KC_LCTL,  KC_LALT,  KC_LGUI,                                KC_SPC,                                 KC_RGUI,  MO(FN),     KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
-    [WIN_FN] = LAYOUT_iso_83(
-         _______,  KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  _______,            _______,
-         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,
-         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,    _______,                      _______,
-         _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,
-         _______,  _______,  _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,
-         _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______),
-
-    // my custom layer(s) -------
     [NUMBER_LAYER] = LAYOUT_iso_83(
-         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
-         _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______, _______, _______,          _______,
-         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
-         _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______, _______),
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX,
+         XXXXXXX, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
 
     [F_KEY_LAYER] = LAYOUT_iso_83(
-         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
-         _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______,          _______,
-         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
-         _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______, _______),
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX,
+         XXXXXXX, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , XXXXXXX,          XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
+
+    [FN] = LAYOUT_iso_83(
+            XXXXXXX,  KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  XXXXXXX,            XXXXXXX,
+            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,            XXXXXXX,
+            RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,                      XXXXXXX,
+            XXXXXXX,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,            XXXXXXX,
+            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  NK_TOGG,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,              XXXXXXX,  XXXXXXX,
+            XXXXXXX,  XXXXXXX,  XXXXXXX,                                XXXXXXX,                                XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [MAC_BASE]     = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [MAC_FN]       = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)},
-    [WIN_BASE]     = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [WIN_FN]       = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)},
-    [NUMBER_LAYER] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [F_KEY_LAYER]  = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)}
+    [BASE]         = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [NUMBER_LAYER] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX)},
+    [F_KEY_LAYER]  = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX)},
+    [FN]           = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX)}
 };
 #endif // ENCODER_MAP_ENABLE
 
@@ -115,6 +92,7 @@ enum combos {
     CMB_L_SCLN_FOR_FN_LAYER
 };
 
+// COMBO MODS
 const uint16_t PROGMEM f_d_combo[] = {KC_F, KC_D, COMBO_END};
 const uint16_t PROGMEM f_s_combo[] = {KC_F, KC_S, COMBO_END};
 const uint16_t PROGMEM f_a_combo[] = {KC_F, KC_A, COMBO_END};
@@ -130,6 +108,7 @@ const uint16_t PROGMEM j_k_scln_combo[] = {KC_J, KC_K, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM j_k_l_scln_combo[] = {KC_J, KC_K, KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM j_l_scln_combo[] = {KC_J, KC_L, KC_SCLN, COMBO_END};
 
+// LAYER SWITCH COMBOS
 const uint16_t PROGMEM s_d_combo[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM a_s_combo[] = {KC_A, KC_S, COMBO_END};
@@ -150,6 +129,7 @@ combo_t key_combos[] = {
     [CMB_J_K_SCLN_FOR_RGUI_RCTL] = COMBO(j_k_scln_combo, RGUI(KC_RCTL)),
     [CMB_J_K_L_SCLN_FOR_RGUI_LALT_RCTL] = COMBO(j_k_l_scln_combo, RGUI(LALT(KC_RCTL))),
     [CMB_J_L_SCLN_FOR_LALT_RCTL] = COMBO(j_l_scln_combo, LALT(KC_RCTL)),
+
     [CMB_S_D_FOR_NUMBER_LAYER] = COMBO(s_d_combo, MO(NUMBER_LAYER)),
     [CMB_K_L_FOR_NUMBER_LAYER] = COMBO(k_l_combo, MO(NUMBER_LAYER)),
     [CMB_A_S_FOR_FN_LAYER] = COMBO(a_s_combo, MO(F_KEY_LAYER)),
