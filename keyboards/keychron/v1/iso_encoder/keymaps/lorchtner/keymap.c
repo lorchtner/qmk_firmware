@@ -22,7 +22,11 @@ enum layers{
   MAC_BASE,
   MAC_FN,
   WIN_BASE,
-  WIN_FN
+  WIN_FN,
+
+  // my custom layer(s) -------
+  NUMBER_LAYER,
+  F_KEY_LAYER
 };
 
 #define KC_TASK LGUI(KC_TAB)
@@ -59,15 +63,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,    _______,                      _______,
          _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,
          _______,  _______,  _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,
-         _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______)
+         _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______),
+
+    // my custom layer(s) -------
+    [NUMBER_LAYER] = LAYOUT_iso_83(
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
+         _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______, _______, _______,          _______,
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
+         _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______, _______),
+
+    [F_KEY_LAYER] = LAYOUT_iso_83(
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
+         _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______,          _______,
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
+         _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______, _______),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [MAC_BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [MAC_FN]   = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)},
-    [WIN_BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [WIN_FN]   = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)}
+    [MAC_BASE]     = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [MAC_FN]       = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)},
+    [WIN_BASE]     = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [WIN_FN]       = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)},
+    [NUMBER_LAYER] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [F_KEY_LAYER]  = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)}
 };
 #endif // ENCODER_MAP_ENABLE
 
@@ -85,7 +108,11 @@ enum combos {
     CMB_J_K_L_FOR_RGUI_LALT,
     CMB_J_K_SCLN_FOR_RGUI_RCTL,
     CMB_J_K_L_SCLN_FOR_RGUI_LALT_RCTL,
-    CMB_J_L_SCLN_FOR_LALT_RCTL
+    CMB_J_L_SCLN_FOR_LALT_RCTL,
+    CMB_S_D_FOR_NUMBER_LAYER,
+    CMB_K_L_FOR_NUMBER_LAYER,
+    CMB_A_S_FOR_FN_LAYER,
+    CMB_L_SCLN_FOR_FN_LAYER
 };
 
 const uint16_t PROGMEM f_d_combo[] = {KC_F, KC_D, COMBO_END};
@@ -103,6 +130,11 @@ const uint16_t PROGMEM j_k_scln_combo[] = {KC_J, KC_K, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM j_k_l_scln_combo[] = {KC_J, KC_K, KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM j_l_scln_combo[] = {KC_J, KC_L, KC_SCLN, COMBO_END};
 
+const uint16_t PROGMEM s_d_combo[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM a_s_combo[] = {KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM l_scln_combo[] = {KC_L, KC_SCLN, COMBO_END};
+
 combo_t key_combos[] = {
     [CMB_F_D_FOR_LGUI] = COMBO(f_d_combo, KC_LGUI),
     [CMB_F_S_FOR_LALT] = COMBO(f_s_combo, KC_LALT),
@@ -118,4 +150,8 @@ combo_t key_combos[] = {
     [CMB_J_K_SCLN_FOR_RGUI_RCTL] = COMBO(j_k_scln_combo, RGUI(KC_RCTL)),
     [CMB_J_K_L_SCLN_FOR_RGUI_LALT_RCTL] = COMBO(j_k_l_scln_combo, RGUI(LALT(KC_RCTL))),
     [CMB_J_L_SCLN_FOR_LALT_RCTL] = COMBO(j_l_scln_combo, LALT(KC_RCTL)),
+    [CMB_S_D_FOR_NUMBER_LAYER] = COMBO(s_d_combo, MO(NUMBER_LAYER)),
+    [CMB_K_L_FOR_NUMBER_LAYER] = COMBO(k_l_combo, MO(NUMBER_LAYER)),
+    [CMB_A_S_FOR_FN_LAYER] = COMBO(a_s_combo, MO(F_KEY_LAYER)),
+    [CMB_L_SCLN_FOR_FN_LAYER] = COMBO(l_scln_combo, MO(F_KEY_LAYER))
 };
