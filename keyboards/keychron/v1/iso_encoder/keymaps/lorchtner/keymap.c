@@ -21,7 +21,7 @@
 enum layers {
     BASE,
     NUMBER_LAYER,
-    F_KEY_LAYER,
+    SPECIAL_CHAR_LAYER,
     FN
 };
 
@@ -40,18 +40,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NUMBER_LAYER] = LAYOUT_iso_83(
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-         XXXXXXX, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,                   XXXXXXX,
-         XXXXXXX, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,
-         XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
+         XXXXXXX, XXXXXXX, XXXXXXX, KC_7   , KC_8   , KC_9   , XXXXXXX, KC_F9  , KC_F10 , KC_F11 , KC_F12 , XXXXXXX, XXXXXXX,                   XXXXXXX,
+         XXXXXXX, KC_0   , KC_4   , KC_5   , KC_6   , XXXXXXX, XXXXXXX, KC_F5  , KC_F6  , KC_F7  , KC_F8  , XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+         XXXXXXX, XXXXXXX, KC_1   , KC_2   , KC_3   , XXXXXXX, XXXXXXX, XXXXXXX, KC_F1  , KC_F2  , KC_F3  , KC_F4  ,          XXXXXXX, XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX,                            KC_SPC ,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
 
-    [F_KEY_LAYER] = LAYOUT_iso_83(
+    [SPECIAL_CHAR_LAYER] = LAYOUT_iso_83(
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX,
-         XXXXXXX, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , XXXXXXX,          XXXXXXX,
-         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,
-         XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
+         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RSFT(KC_4), RSFT(KC_5), RSFT(KC_6), KC_GRV , XXXXXXX, XXXXXXX,                   XXXXXXX,
+         XXXXXXX, RSFT(KC_2), LALT(KC_8), LALT(KC_5), LSFT(KC_8), XXXXXXX, XXXXXXX, RSFT(KC_1), LSFT(KC_MINS), LSFT(KC_7), LSFT(LALT(KC_7)), XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+         XXXXXXX, LSFT(KC_NUHS), LALT(KC_9), LALT(KC_6), LSFT(KC_9), XXXXXXX, XXXXXXX, XXXXXXX, KC_NUHS, LALT(KC_7), LSFT(KC_0), LSFT(KC_EQL),          XXXXXXX, XXXXXXX,
+         XXXXXXX, XXXXXXX, XXXXXXX,                            KC_SPC ,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
 
     [FN] = LAYOUT_iso_83(
             XXXXXXX,  KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  XXXXXXX,            XXXXXXX,
@@ -64,10 +64,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [BASE]         = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [NUMBER_LAYER] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX)},
-    [F_KEY_LAYER]  = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX)},
-    [FN]           = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX)}
+    [BASE]               = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [NUMBER_LAYER]       = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX)},
+    [SPECIAL_CHAR_LAYER] = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX)},
+    [FN]                 = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)}
 };
 #endif // ENCODER_MAP_ENABLE
 
@@ -89,13 +89,11 @@ enum combos {
 
     CMB_S_D,
     CMB_K_L,
-    CMB_A_S,
-    CMB_L_SCLN,
+    CMB_A_S_D,
+    CMB_K_L_SCLN,
 
     CMB_F_J,
-    CMB_D_K,
-    CMB_D_J,
-    CMB_F_K
+    CMB_D_K
 };
 
 // COMBO MODS
@@ -117,14 +115,12 @@ const uint16_t PROGMEM j_l_scln_combo[] = {KC_J, KC_L, KC_SCLN, COMBO_END};
 // LAYER SWITCH COMBOS
 const uint16_t PROGMEM s_d_combo[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM a_s_combo[] = {KC_A, KC_S, COMBO_END};
-const uint16_t PROGMEM l_scln_combo[] = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM a_s_d_combo[] = {KC_A, KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM k_l_scln_combo[] = {KC_K, KC_L, KC_SCLN, COMBO_END};
 
 // KEY COMBOS
 const uint16_t PROGMEM f_j_combo[] = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM d_k_combo[] = {KC_D, KC_K, COMBO_END};
-const uint16_t PROGMEM d_j_combo[] = {KC_D, KC_J, COMBO_END};
-const uint16_t PROGMEM f_k_combo[] = {KC_F, KC_K, COMBO_END};
 
 combo_t key_combos[] = {
     [CMB_F_D] = COMBO(f_d_combo, KC_LGUI),
@@ -144,11 +140,9 @@ combo_t key_combos[] = {
 
     [CMB_S_D] = COMBO(s_d_combo, MO(NUMBER_LAYER)),
     [CMB_K_L] = COMBO(k_l_combo, MO(NUMBER_LAYER)),
-    [CMB_A_S] = COMBO(a_s_combo, MO(F_KEY_LAYER)),
-    [CMB_L_SCLN] = COMBO(l_scln_combo, MO(F_KEY_LAYER)),
+    [CMB_A_S_D] = COMBO(a_s_d_combo, MO(SPECIAL_CHAR_LAYER)),
+    [CMB_K_L_SCLN] = COMBO(k_l_scln_combo, MO(SPECIAL_CHAR_LAYER)),
 
     [CMB_F_J] = COMBO(f_j_combo, KC_ESC),
-    [CMB_D_K] = COMBO(d_k_combo, KC_ENT),
-    [CMB_D_J] = COMBO(d_j_combo, KC_BSPC),
-    [CMB_F_K] = COMBO(f_k_combo, KC_DEL)
+    [CMB_D_K] = COMBO(d_k_combo, KC_ENT)
 };
