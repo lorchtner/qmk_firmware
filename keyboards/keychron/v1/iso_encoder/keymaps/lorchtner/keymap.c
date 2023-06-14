@@ -92,8 +92,8 @@ enum combos {
     CMB_A_S_D,
     CMB_K_L_SCLN,
 
-    CMB_F_J,
-    CMB_D_K
+    CMB_F_G,
+    CMB_H_J
 };
 
 // COMBO MODS
@@ -119,8 +119,8 @@ const uint16_t PROGMEM a_s_d_combo[] = {KC_A, KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM k_l_scln_combo[] = {KC_K, KC_L, KC_SCLN, COMBO_END};
 
 // KEY COMBOS
-const uint16_t PROGMEM f_j_combo[] = {KC_F, KC_J, COMBO_END};
-const uint16_t PROGMEM d_k_combo[] = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM f_g_combo[] = {KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM h_j_combo[] = {KC_H, KC_J, COMBO_END};
 
 combo_t key_combos[] = {
     [CMB_F_D] = COMBO(f_d_combo, KC_LGUI),
@@ -143,6 +143,6 @@ combo_t key_combos[] = {
     [CMB_A_S_D] = COMBO(a_s_d_combo, MO(SPECIAL_CHAR_LAYER)),
     [CMB_K_L_SCLN] = COMBO(k_l_scln_combo, MO(SPECIAL_CHAR_LAYER)),
 
-    [CMB_F_J] = COMBO(f_j_combo, KC_ESC),
-    [CMB_D_K] = COMBO(d_k_combo, KC_ENT)
+    [CMB_F_G] = COMBO(f_g_combo, KC_ESC),
+    [CMB_H_J] = COMBO(h_j_combo, KC_ENT)
 };
