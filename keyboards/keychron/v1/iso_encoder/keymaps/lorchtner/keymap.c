@@ -38,12 +38,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_LCTL, KC_LALT, KC_LGUI,                            KC_SPC,                             KC_RGUI, MO(FN),  KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
 
     [NUMBER_LAYER] = LAYOUT_iso_83(
-         XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-         XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-         XXXXXXX, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), LALT(KC_5), LALT(KC_6), LALT(KC_7), LALT(KC_8), LALT(KC_9), LALT(KC_0), XXXXXXX, XXXXXXX,                   XXXXXXX,
-         XXXXXXX, KC_1      , KC_2      , KC_3      , KC_4      , KC_5      , KC_6      , KC_7      , KC_8      , KC_9      , KC_0      , XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-         XXXXXXX, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), RSFT(KC_6), KC_PSLS   , RSFT(KC_8), RSFT(KC_9), RSFT(KC_0), XXXXXXX,          XXXXXXX, XXXXXXX,
-         XXXXXXX, XXXXXXX   , XXXXXXX   ,                                     KC_SPC    ,                                     XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
+         XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX     , XXXXXXX, XXXXXXX     ,          XXXXXXX,
+         XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX     , XXXXXXX, XXXXXXX     ,          XXXXXXX,
+         XXXXXXX, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), LALT(KC_5), LALT(KC_6), LALT(KC_7), LALT(KC_8), LALT(KC_9), LALT(KC_0), LALT(KC_EQL), XXXXXXX,                        XXXXXXX,
+         XXXXXXX, KC_1      , KC_2      , KC_3      , KC_4      , KC_5      , KC_6      , KC_7      , KC_8      , KC_9      , KC_0      , KC_EQL      , XXXXXXX, XXXXXXX     ,          XXXXXXX,
+         XXXXXXX, XXXXXXX   , LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), RSFT(KC_6), KC_PSLS   , RSFT(KC_8), RSFT(KC_9), RSFT(KC_0)  ,          RSFT(KC_EQL), XXXXXXX,
+         XXXXXXX, XXXXXXX   , XXXXXXX   ,                                     KC_SPC    ,                                     XXXXXXX   , XXXXXXX     , XXXXXXX, XXXXXXX     , XXXXXXX, XXXXXXX),
 
     [SPECIAL_CHAR_LAYER] = LAYOUT_iso_83(
          XXXXXXX, XXXXXXX      , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX   , XXXXXXX      , XXXXXXX   , XXXXXXX         , XXXXXXX     , XXXXXXX, XXXXXXX,          XXXXXXX,
