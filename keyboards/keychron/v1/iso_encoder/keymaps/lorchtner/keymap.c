@@ -18,6 +18,49 @@
 
 // clang-format off
 
+enum custom_keycodes {
+    CARET = SAFE_RANGE,
+    BACKTICK,
+    TILDE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case CARET:
+        if (record->event.pressed) {
+            register_code(KC_GRV);
+        } else {
+            unregister_code(KC_GRV);
+            tap_code(KC_SPC);
+        }
+        break;
+
+    case BACKTICK:
+        if (record->event.pressed) {
+            register_code(KC_LSFT);
+            register_code(KC_EQL);
+        } else {
+            unregister_code(KC_EQL);
+            unregister_code(KC_LSFT);
+            tap_code(KC_SPC);
+        }
+        break;
+
+    case TILDE:
+        if (record->event.pressed) {
+            register_code(KC_LALT);
+            register_code(KC_N);
+        } else {
+            unregister_code(KC_N);
+            unregister_code(KC_LALT);
+            tap_code(KC_SPC);
+        }
+        break;
+    }
+
+    return true;
+};
+
 enum layers {
     BASE,
     NUMBER_LAYER,
@@ -36,12 +79,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_LCTL, KC_LALT, LSFT(KC_LALT),                            SPACE_LAYER,                            RSFT(KC_RGUI), MO(FN),  KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
 
     [NUMBER_LAYER] = LAYOUT_iso_83(
-         XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX     , XXXXXXX, XXXXXXX     ,          XXXXXXX,
-         XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX     , XXXXXXX, XXXXXXX     ,          XXXXXXX,
-         XXXXXXX, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), LALT(KC_5), LALT(KC_6), LALT(KC_7), LALT(KC_8), LALT(KC_9), LALT(KC_0), LALT(KC_EQL), XXXXXXX,                        XXXXXXX,
-         XXXXXXX, KC_1      , KC_2      , KC_3      , KC_4      , KC_5      , KC_6      , KC_7      , KC_8      , KC_9      , KC_0      , KC_EQL      , XXXXXXX, XXXXXXX     ,          XXXXXXX,
-         XXXXXXX, XXXXXXX   , LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), RSFT(KC_6), KC_PSLS   , RSFT(KC_8), RSFT(KC_9), RSFT(KC_0)  ,          RSFT(KC_EQL), XXXXXXX,
-         XXXXXXX, XXXXXXX   , XXXXXXX   ,                                     KC_SPC    ,                                     XXXXXXX   , XXXXXXX     , XXXXXXX, XXXXXXX     , XXXXXXX, XXXXXXX),
+         XXXXXXX , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX       , XXXXXXX, XXXXXXX      ,          XXXXXXX,
+         XXXXXXX , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX   , XXXXXXX       , XXXXXXX, XXXXXXX      ,          XXXXXXX,
+         CARET   , LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), LALT(KC_5), LALT(KC_6), LALT(KC_7), LALT(KC_8), LALT(KC_9), LALT(KC_0), LALT(KC_MINS) , XXXXXXX,                         XXXXXXX,
+         BACKTICK, KC_1      , KC_2      , KC_3      , KC_4      , KC_5      , KC_6      , KC_7      , KC_8      , KC_9      , KC_0      , KC_MINS       , XXXXXXX, XXXXXXX      ,          XXXXXXX,
+         XXXXXXX , TILDE     , LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), RSFT(KC_6), KC_PSLS   , RSFT(KC_8), RSFT(KC_9), RSFT(KC_0)    ,          RSFT(KC_MINS), XXXXXXX,
+         XXXXXXX , XXXXXXX   , XXXXXXX   ,                                     KC_SPC    ,                                     XXXXXXX   , XXXXXXX       , XXXXXXX, XXXXXXX      , XXXXXXX, XXXXXXX),
 
     [FN] = LAYOUT_iso_83(
             XXXXXXX,  KC_BRID,  KC_BRIU,  XXXXXXX,  XXXXXXX,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  XXXXXXX,            XXXXXXX,
